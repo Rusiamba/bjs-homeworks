@@ -18,14 +18,14 @@ function getAverageMark(marks){
     if (marks.length == 0) return 0;
     if (marks.length > 5) {
         console.log("Массив больше 5 значений");
-        marks = marks.slice(0, 6);
+        marks = marks.slice(0, 5);
     }
 
     let sum = 0;
     for (let i = 0; i< marks.length; i++) {
         sum += marks[i];
     }
-    return sum/5;
+    return sum/marks.length;
 }
 
 function askDrink(name,dateOfBirthday){
