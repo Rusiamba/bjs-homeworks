@@ -4,7 +4,7 @@ function getResult(a,b,c){
     
     if (d = 0) {
         let result = -b/2*a;
-        return result;
+        return [result];
     }
     
     if (d > 0) {
