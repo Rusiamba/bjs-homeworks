@@ -1,10 +1,12 @@
 function getResult(a,b,c){
     let d = b**2 - 4*a*c;
-    if (d <= 0) return [];
+    if (d < 0) {
+        return [];//пустой массив
+    }
     
     if (d = 0) {
-        let result = -b/2*a;
-        return [result];
+        let result = -b/2*a;//обьявил переменную вычесляющую один корень
+        return [result];//возвращаю корень
     }
     
     if (d > 0) {
