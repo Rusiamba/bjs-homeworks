@@ -4,7 +4,7 @@ function getResult(a,b,c){
         return [];//пустой массив
     }
     
-    if (d = 0) {
+    if (d == 0) {
         let result1 = -b/2*a;//обьявил переменную вычесляющую один корень
         return [result1];//возвращаю корень
     }
