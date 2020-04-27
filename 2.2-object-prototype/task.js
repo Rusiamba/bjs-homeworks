@@ -5,8 +5,9 @@ function getAnimalSound(animal) {
 }
 
 function getAverageMark(marks) {
-    // код для задачи №2 писать здесь
-    // return averageMark
+    let roundedAverage = average;
+    let average = Math.round();
+    return roundedAverage;
 }
 
 function checkBirthday(birthday) {
