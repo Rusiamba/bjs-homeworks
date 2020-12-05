@@ -1,57 +1,119 @@
-//Задача 1
+//Задание 1
+ let getSolutions = (a, b, c) => {
+     let D = Math.pow(b, 2) - 4 * a * c;
+     if (D < 0) {
+         return {
+             'D': D,
+             roots: []
+         }
+     }
+     if (D === 0) {
+         let x1 = -b / (2 * a);
+         return {
+             'D': D,
+             roots: [x1]
+         };
+     }
+     if (D > 0) {
+         let x1 = (-b + Math.sqrt(D)) / (2 * a);
+         let x2 = (-b - Math.sqrt(D)) / (2 * a);
+         return {
+             'D': D,
+             roots: [x1, x2]
+         };
+     }
+ }
 
-function getSolutions( a, b, c ) {
-    let D = b** - 4*a*c;
+ let showSolutionsMessage = (a, b, c) => {
+     let result = getSolutions(a, b, c);
+     console.log(`Вычисляем корни квадратного уравнения ${a}x² + ${b}x + c`);
+     console.log(`Значение дискриминанта: ${result.D}`);
+     if (result.D < 0) {
+         console.log(`Уравнение не имеет вещественных корней`);
+     }
+     if (result.D === 0) {
+         console.log(`Уравнение имеет один корень X₁ = ${result.roots[0]}`);
+     }
+     if (result.D > 0) {
+         console.log(`Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]}`);
+     }
+ }
 
-    if(D < 0) {
-        return { D: D , roots: [] }
+ showSolutionsMessage(1, 2, 3);
+ showSolutionsMessage(7, 20, -3)
+ showSolutionsMessage(2, 4, 2)
+
+ //Задание 2
+ let getAverageMark = (marks) => {
+     if (marks.length === 0) {
+         return 0;
+     }
+     return marks.reduce(function (sum, elem) {
+         return sum + elem
+     }, 0) / marks.length;
+ }
+
+ let isEmpty = (obj) => {
+     for (let key in obj) {
+         return true;
+     }
+     return false;
+ }
+
+ let getAverageScore = (data) => {
+     let count = 0;
+     let sum = 0;
+     console.log(isEmpty(data));
+     if (isEmpty(data)) {
+         for (const subject in data) {
+             data[subject] = getAverageMark(data[subject]);
+         }
+         for (const subject in data) {
+             sum += data[subject];
+             count++;
+         }
+         data.average = sum / count;
+         return data;
+     } else {
+         data.average = 0;
+         return data;
+     }
+
+ }
+
+ console.log(getAverageScore({}));
+ //Задание 3(необ)
+ let getDecodedValue = (secret) => {
+     if (secret === 0) {
+         return "Родриго";
+     }
+     if (secret === 1) {
+         return "Эмильо";
+     }
+ }
+ let getPersonData = (secretData) => {
+    let result = {
+        firstName: null,
+        lastName: null
     }
+    result.firstName = getDecodedValue(secretData.aaa);
+    result.lastName = getDecodedValue(secretData.bbb);
+    return result;
+ }
 
-    if(D === 0) {
-        let x1 = -b / 2*a;
-        return { D: D , roots: [x1] }
-    }
-
-    if(D > 0) {
-        let x1 =  -b * Math.sqrt(d)/2*a;
-        let x2 = b * Math.sqrt(d)/2*a;
-        return { D: D , roots: [x1 , x2] }
-    }
-}
-
-
-function showSolutionsMessage( a, b, c ) {
-    let result = D;
-
-    console.log('Вычисляем корни квадратного уравнения ax² + bx + c');
-    console.log('Значение дискриминанта:' + result);
-
-    if(result < 0) {
-        console.log('Уравнение не имеет вещественных корней');
-    }
-
-    if(result === 0) {
-        console.log('Уравнение имеет один корень X₁ =' + x1);
-    }
-
-    if(result > 0) {
-        console.log('Уравнение имеет два корня. X₁ =' + x1, 'X₂ =' + x2);
-    }
-}
-
-//Задача 2
-
-function getAverageScore(data) {
-    let data = {
-        algebra: [2, 4, 3],
-        russian: [5, 4, 2],
-        average: data,
-    }
-}
-
-
-function getAverageMark(marks) {
-    let average;
-
-    average = (data / 3);
-}
+ console.log(getPersonData({
+     aaa: 0,
+     bbb: 1   
+ }));
+ console.log(getPersonData({
+    aaa: 1,
+    bbb: 0   
+}));
+console.log(getPersonData({
+    aaa: 0,
+    bbb: 0   
+}));
+console.log(getPersonData({
+    aaa: 1,
+    bbb: 1   
+}));
